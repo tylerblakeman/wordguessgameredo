@@ -10,7 +10,7 @@
 
 2. Function to select random words (place into variable to call later)
     **-generate random number to use as index to pull random word
-    -Count how many letters in owrd to know how many _ to show
+    -Count how many letters in word to know how many _ to show
     - "_"to show letters not Guessed
     - Split to turn random words into an array for each letter to become a character
 
