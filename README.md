@@ -1,2 +1,2 @@
 # wordguessgameredo
-Collaborative effort with Michelle Meza
+Collaborative effort with Michelle Meza and Jacob Zirbel.
