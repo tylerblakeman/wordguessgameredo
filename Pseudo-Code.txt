@@ -1,0 +1,35 @@
+1.Create Global variables
+    -Array (words to guess)
+    - Number of guesses
+    -Wins/Losses
+    -Guessed Letters
+    -Player Input
+    -Word currently being Guessed
+    -Number of blanks 
+    -letters (Alphabet)
+
+2. Function to select random words (place into variable to call later)
+    -generate random number to use as index to pull random word
+    -Count how many letters in owrd to know how many _ to show
+    - "_"to show letters not Guessed
+    - Split to turn random words into an array for each letter to become a character
+
+3. Function to accept input from the user
+    -convert to lowercase 
+    -When key is pressed that letter is stored into a variable
+    -Make sure input is a letter
+    -Check for letters already used
+
+4. Fill in letters into Current word, if guessed correctly
+    -Show letter in current word
+    -Put letter into already guessed letters list
+    -If letter is worng, subtract a life/turn
+    
+6. Win or lose, if player runs out of guesses or guesses the word
+    -After taking input from user if word is complete add to win score
+    -Out of turns and word is incomplete, mark a loss and display word
+    
+7. Reset Game / Play again when any letter pressed 
+
+
+
