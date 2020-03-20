@@ -29,7 +29,9 @@ function displayBlanks() {
 
 function getRandomWord() {
 	randomWord = wordArray[Math.floor(Math.random() * wordArray.length)];
-	console.log(randomWord);
+    randomWord = randomWord.split("");
+    console.log(randomWord);
+    
 }
 
 function startGame() {
@@ -49,16 +51,16 @@ document.onkeyup = function(event) {
 	} else {
 		guessedLetters.push(playerInput);
 		console.log(guessedLetters);
-		guessedLettersHtml.innerText = guessedLetters;
+		guessedLettersHtml.innerText = guessedLetters.join(", ");
 		if (randomWord.includes(playerInput) == false) {
 			livesRemaining--;
 		} else {
 			for (let i = 0; i < randomWord.length; i++) {
-				if (randomWord[i] == playerInput);
-				{
-					wordBlanks[i] = playerInput;
-					wordDisplayHtml.innerText = wordBlanks.join(" ");
-				}
+				if (randomWord[i].includes(playerInput)){
+                    console.log(i);
+                    wordBlanks[i] = playerInput;
+                    wordDisplayHtml.innerText = wordBlanks.join(" ");
+                }
 			}
 		}
 	}
