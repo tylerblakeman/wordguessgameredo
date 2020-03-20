@@ -20,11 +20,11 @@ function displayBlanks() {
 	wordBlanks = [];
 	for (i = 0; i < randomWord.length; i++) {
 		wordBlanks.push("_");
-    }
-    
-//replacing the commas in the array with spaces as it is pushed to the HTML
-    wordDisplayHtml.innerText = wordBlanks.join(" ");
-    console.log(wordBlanks);
+	}
+
+	//replacing the commas in the array with spaces as it is pushed to the HTML
+	wordDisplayHtml.innerText = wordBlanks.join(" ");
+	console.log(wordBlanks);
 }
 
 function getRandomWord() {
@@ -40,24 +40,29 @@ function startGame() {
 startGame();
 
 document.onkeyup = function(event) {
-    var playerInput = event.key.toLowerCase();
-    console.log(playerInput);
-    if (alphabetString.includes(playerInput) == false){
-        console.log("not a letter");
-    }
-    else if (guessedLetters.includes(playerInput)){
-        console.log("you already did that")
-    }
-    else {
-        guessedLetters.push(playerInput);
-        console.log(guessedLetters);
-        guessedLettersHtml.innerText = guessedLetters;
-    }
-}
-
-
-
-
+	var playerInput = event.key.toLowerCase();
+	console.log(playerInput);
+	if (alphabetString.includes(playerInput) == false) {
+		console.log("not a letter");
+	} else if (guessedLetters.includes(playerInput)) {
+		console.log("you already did that");
+	} else {
+		guessedLetters.push(playerInput);
+		console.log(guessedLetters);
+		guessedLettersHtml.innerText = guessedLetters;
+		if (randomWord.includes(playerInput) == false) {
+			livesRemaining--;
+		} else {
+			for (let i = 0; i < randomWord.length; i++) {
+				if (randomWord[i] == playerInput);
+				{
+					wordBlanks[i] = playerInput;
+					wordDisplayHtml.innerText = wordBlanks.join(" ");
+				}
+			}
+		}
+	}
+};
 
 function userWins() {
 	wins++;
