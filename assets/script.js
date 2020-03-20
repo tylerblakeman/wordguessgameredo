@@ -31,6 +31,7 @@ function getRandomWord() {
 	randomWord = wordArray[Math.floor(Math.random() * wordArray.length)];
     randomWord = randomWord.split("");
     console.log(randomWord);
+    displayBlanks();
     
 }
 
@@ -55,19 +56,24 @@ document.onkeyup = function(event) {
 		if (randomWord.includes(playerInput) == false) {
 			livesRemaining--;
 		} else {
-			for (let i = 0; i < randomWord.length; i++) {
-				if (randomWord[i].includes(playerInput)){
+            for (let i = 0; i < randomWord.length; i++) {
+                if (randomWord[i].includes(playerInput)){
                     console.log(i);
                     wordBlanks[i] = playerInput;
                     wordDisplayHtml.innerText = wordBlanks.join(" ");
+                    if (wordBlanks.includes("_") == false) {
+                        userWins();
+                    }
                 }
 			}
 		}
 	}
 };
 
+
 function userWins() {
-	wins++;
+    wordDisplayHtml.innerText = wordBlanks.join(" ")
+    wins++;
 	winsHtml.textContent = wins;
 	alert("yay");
 	reset();
