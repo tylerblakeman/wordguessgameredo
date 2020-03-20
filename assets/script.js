@@ -11,9 +11,8 @@ var winsHtml = document.getElementsByClassName("winsHtml")[0];
 var LossesHtml = document.getElementsByClassName("lossesHtml")[0];
 var wordDisplayHtml = document.getElementsByClassName("wordDisplayHtml")[0];
 var livesHtml = document.getElementsByClassName("livesHtml")[0];
-var guessedLettersHtml = document.getElementsByClassName(
-	"guessedLettersHtml"
-)[0];
+var guessedLettersHtml = document.getElementsByClassName("guessedLettersHtml")[0];
+var alertHtml = document.getElementsByClassName("alertBar");
 
 //determining length of the word and pushing underlines into an array
 function displayBlanks() {
@@ -54,7 +53,12 @@ document.onkeyup = function(event) {
 		console.log(guessedLetters);
 		guessedLettersHtml.innerText = guessedLetters.join(", ");
 		if (randomWord.includes(playerInput) == false) {
-			livesRemaining--;
+            livesRemaining--;
+            livesHtml.innerText = livesRemaining;
+            if (livesRemaining == 0){
+                return userLosses();
+                reset();
+            }
 		} else {
             for (let i = 0; i < randomWord.length; i++) {
                 if (randomWord[i].includes(playerInput)){
@@ -90,7 +94,10 @@ function reset() {
 	wordDisplayHtml.textContent = "";
 	guessedLettersHtml.textContent = "";
 	livesHtml.textContent = "9";
-	livesRemaining = 9;
+    livesRemaining = 9;
+    guessedLetters = [];
+    getRandomWord();
+    displayBlanks();
 }
 
 getRandomWord();
