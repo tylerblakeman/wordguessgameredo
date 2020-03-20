@@ -5,7 +5,8 @@ var losses = 0;
 var playerInput;
 var randomWord;
 var wordBlanks;
-var alphabetString = "abcdefghijklmnopqrstuvwxyz".split("")[0];
+var guessedLetters = [];
+var alphabetString = "abcdefghijklmnopqrstuvwxyz".split("");
 var winsHtml = document.getElementsByClassName("winsHtml")[0];
 var LossesHtml = document.getElementsByClassName("lossesHtml")[0];
 var wordDisplayHtml = document.getElementsByClassName("wordDisplayHtml")[0];
@@ -14,12 +15,16 @@ var guessedLettersHtml = document.getElementsByClassName(
 	"guessedLettersHtml"
 )[0];
 
+//determining length of the word and pushing underlines into an array
 function displayBlanks() {
 	wordBlanks = [];
 	for (i = 0; i < randomWord.length; i++) {
 		wordBlanks.push("_");
-	}
-	console.log(wordBlanks);
+    }
+    
+//replacing the commas in the array with spaces as it is pushed to the HTML
+    wordDisplayHtml.innerText = wordBlanks.join(" ");
+    console.log(wordBlanks);
 }
 
 function getRandomWord() {
@@ -31,7 +36,28 @@ function startGame() {
 	getRandomWord();
 	displayBlanks();
 }
+
 startGame();
+
+document.onkeyup = function(event) {
+    var playerInput = event.key.toLowerCase();
+    console.log(playerInput);
+    if (alphabetString.includes(playerInput) == false){
+        console.log("not a letter");
+    }
+    else if (guessedLetters.includes(playerInput)){
+        console.log("you already did that")
+    }
+    else {
+        guessedLetters.push(playerInput);
+        console.log(guessedLetters);
+        guessedLettersHtml.innerText = guessedLetters;
+    }
+}
+
+
+
+
 
 function userWins() {
 	wins++;
